@@ -4,16 +4,17 @@ import browser.BrowserGetter;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
 @TestInstance(PER_CLASS)
-public class SeleniumTwiTest {
+public class WithConfigurationTest {
     private final BrowserGetter browserGetter = new BrowserGetter();
     private WebDriver driver;
 
     @BeforeAll
     public void beforeAll() {
-        driver = browserGetter.getChromeDriver();
+        driver = browserGetter.getDriver();
 
     }
 
@@ -24,10 +25,9 @@ public class SeleniumTwiTest {
 
 
     @Test
-    public void openTheComPageAndCheckTheTitle2() {
-        String expectedTitle = "Example Domain";
+    public void justATest() {
         driver.get("https://www.example.com");
-        Assertions.assertEquals(expectedTitle, driver.getTitle());
+        assertEquals(driver.getTitle(),"Example Domain");
     }
 
 }
